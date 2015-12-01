@@ -22,6 +22,7 @@ ENV PATH /root/mrtrix3/bin/:$PATH
 
 # Update, install wget, then fsl & cmake (cmake to compile ANTs)
 RUN apt-get update && apt-get install -y wget
+
 RUN cd /root/ &&\
     wget -O- http://neuro.debian.net/lists/trusty.de-md.full | tee /etc/apt/sources.list.d/neurodebian.sources.list &&\
     apt-key adv --recv-keys --keyserver hkp://pgp.mit.edu:80 0xA5D32F012649A5A9 &&\
@@ -29,6 +30,7 @@ RUN cd /root/ &&\
     apt-get install -y\
         fsl-complete\
         cmake
+
 RUN cd /root/ &&\
     git clone git://github.com/stnava/ANTs.git &&\
     mkdir antsbin && cd antsbin &&\
